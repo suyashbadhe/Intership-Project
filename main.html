@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerFit Gym - Premium Fitness Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00a6ff;
+            --secondary: #000000;
+            --accent: #2989d8;
+            --dark: #1A202C;
+            --light: #F7FAFC;
+            --gradient: linear-gradient(135deg, #0973fdfe 0%, #00e1ff 100%);
+            --gradient-dark:linear-gradient(135deg, #0973fdfe 0%, #00e1ff 100%);
+            --success: #48BB78;
+            --warning: #00d0ffeb;
+            --facebook: #1877F2;
+            --twitter: #1DA1F2;
+            --instagram: #E4405F;
+            --linkedin: #0077B5;
+            --youtube: #FF0000;
+            --shadow-primary: 0 4px 15px rgba(0, 166, 255, 0.25);
+            --shadow-hover: 0 8px 25px rgba(0, 166, 255, 0.35);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .header-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.15);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: var(--dark);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(0, 166, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://plus.unsplash.com/premium_photo-1661286693672-2253d320fd3d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            position: relative;
+            z-index: 2;
+            animation: slideInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            animation: fadeIn 1s ease 0.5s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: var(--secondary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 3.5rem 2.5rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.popular {
+            border: 3px solid var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 20px 45px rgba(0, 166, 255, 0.2);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 4rem;
+            transform: rotate(45deg);
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+
+        .price-period {
+            color: var(--dark);
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 2.5rem 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .features-list i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+
+        .features-list i.fa-times {
+            color: #E53E3E;
+        }
+
+        /* Schedule Section - Enhanced */
+        .schedule {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .schedule-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .day-schedule {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .day-schedule:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 166, 255, 0.15);
+        }
+
+        .day-schedule h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .time-slot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+
+        .time-slot:hover {
+            background: rgba(0, 166, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .time-slot:last-child {
+            border-bottom: none;
+        }
+
+        .time-slot span:first-child {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .time-slot span:last-child {
+            color: var(--primary);
+            font-weight: 600;
+            background: rgba(0, 166, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        /* Registration Form - Enhanced */
+        .registration {
+            padding: 6rem 0;
+            background: var(--gradient-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .registration::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 4rem 3rem;
+            border-radius: 25px;
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 166, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Customer Care */
+        .customer-care {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer - Enhanced */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-logo span {
+            color: white;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            /* color: var(--primary); */
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links a.facebook:hover {
+            background: var(--facebook);
+        }
+
+        .social-links a.twitter:hover {
+            background: var(--twitter);
+        }
+
+        .social-links a.instagram:hover {
+            background: var(--instagram);
+        }
+
+        .social-links a.linkedin:hover {
+            background: var(--linkedin);
+        }
+
+        .social-links a.youtube:hover {
+            background: var(--youtube);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Modals */
+
+
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 25px;
+            max-width: 450px;
+            margin: 10% auto;
+            position: relative;
+            animation: modalSlideIn 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(80px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design - Enhanced */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: all 0.4s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+                backdrop-filter: blur(10px);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .form-container {
+                padding: 2.5rem 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .auth-buttons {
+                gap: 0.5rem;
+            }
+
+            .feature-card,
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-dumbbell logo-icon"></i>
+                Power<span>Fit</span>
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
+                <li><a href="#pricing"><i class="fas fa-tag"></i> Pricing</a></li>
+                <li><a href="#schedule"><i class="fas fa-clock"></i> Schedule</a></li>
+                <li><a href="#registration"><i class="fas fa-user-plus"></i> Register</a></li>
+                <li><a href="#customer-care"><i class="fas fa-headset"></i> Support</a></li>
+            </ul>
+
+            <div class="auth-buttons">
+                <button class="btn btn-outline" onclick="openModal('loginModal')">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button class="btn btn-primary" onclick="openModal('signupModal')">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Body, Elevate Your Life</h1>
+                <p>Join our community of fitness enthusiasts and experience world-class training with state-of-the-art
+                    equipment, expert coaches, and a supportive environment designed for your success.</p>
+                <div class="auth-buttons">
+                    <button class="btn btn-primary" onclick="openModal('signupModal')">
+                        <i class="fas fa-rocket"></i> Start Your Journey
+                    </button>
+                    <button class="btn btn-outline"
+                        style="background: rgba(255,255,255,0.15); color: white; border-color: white;">
+                        <i class="fas fa-play-circle"></i> Watch Video
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Happy Members</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Expert Trainers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Open Access</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title fade-in">Why Choose PowerFit?</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Premium Equipment</h3>
+                    <p>Latest fitness technology from top brands including TechnoGym, Life Fitness, and Hammer Strength.
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Expert Coaching</h3>
+                    <p>Certified trainers with Olympic-level expertise in strength, conditioning, and nutrition
+                        guidance.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                    <h3>24/7 Access</h3>
+                    <p>Round-the-clock access with secure keycard entry for ultimate flexibility in your training
+                        schedule.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3>Health Tracking</h3>
+                    <p>Advanced biometric scanning and progress monitoring with personalized fitness reports.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Recovery Zone</h3>
+                    <p>Cryotherapy, massage chairs, and hydrotherapy for optimal post-workout recovery.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Results Guaranteed</h3>
+                    <p>90-day transformation programs with money-back guarantee for measurable results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title fade-in">Elite Membership Plans</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>Essential</h3>
+                    <div class="price">$59<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Full Gym Access</li>
+                        <li><i class="fas fa-check"></i> Free Weights Area</li>
+                        <li><i class="fas fa-check"></i> Cardio Equipment</li>
+                        <li><i class="fas fa-times"></i> Group Classes</li>
+                        <li><i class="fas fa-times"></i> Personal Training</li>
+                        <li><i class="fas fa-times"></i> Recovery Zone</li>
+                    </ul>
+                    <button class="btn btn-outline">Get Started</button>
+                </div>
+
+                <div class="pricing-card popular fade-in">
+                    <div class="popular-badge">BEST VALUE</div>
+                    <h3>Premium</h3>
+                    <div class="price">$89<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> All Essential Features</li>
+                        <li><i class="fas fa-check"></i> Unlimited Group Classes</li>
+                        <li><i class="fas fa-check"></i> Functional Training</li>
+                        <li><i class="fas fa-check"></i> Locker & Towel Service</li>
+                        <li><i class="fas fa-times"></i> Personal Training</li>
+                        <li><i class="fas fa-check"></i> Recovery Zone Access</li>
+                    </ul>
+                    <button class="btn btn-primary">Choose Premium</button>
+                </div>
+
+                <div class="pricing-card fade-in">
+                    <h3>Elite</h3>
+                    <div class="price">$149<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> All Premium Features</li>
+                        <li><i class="fas fa-check"></i> 4 Personal Training Sessions</li>
+                        <li><i class="fas fa-check"></i> Nutrition Planning</li>
+                        <li><i class="fas fa-check"></i> 24/7 VIP Access</li>
+                        <li><i class="fas fa-check"></i> Premium Recovery Access</li>
+                        <li><i class="fas fa-check"></i> Priority Booking</li>
+                    </ul>
+                    <button class="btn btn-outline">Go Elite</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <h2 class="section-title fade-in">Training Schedule</h2>
+            <div class="schedule-container">
+                <div class="day-schedule fade-in">
+                    <h3>Weekdays (Mon-Fri)</h3>
+                    <div class="time-slot">
+                        <span>Early Morning</span>
+                        <span>5:00 AM - 9:00 AM</span>
+                    </div>
+                    <div class="time-slot">
+                        <span>Mid Day</span>
+                        <span>11:00 AM - 2:00 PM</span>
+                    </div>
+                    <div class="time-slot">
+                        <span>Evening Peak</span>
+                        <span>4:00 PM - 10:00 PM</span>
+                    </div>
+                    <div class="time-slot">
+                        <span>Night Owl</span>
+                        <span>10:00 PM - 5:00 AM</span>
+                    </div>
+                </div>
+
+                <div class="day-schedule fade-in">
+                    <h3>Weekends (Sat-Sun)</h3>
+                    <div class="time-slot">
+                        <span>Morning</span>
+                        <span>6:00 AM - 12:00 PM</span>
+                    </div>
+                    <div class="time-slot">
+                        <span>Afternoon</span>
+                        <span>1:00 PM - 6:00 PM</span>
+                    </div>
+                    <div class="time-slot">
+                        <span>Evening</span>
+                        <span>7:00 PM - 10:00 PM</span>
+                    </div>
+                </div>
+
+                <div class="day-schedule fade-in">
+                    <h3>Special Classes</h3>
+                    <div class="time-slot">
+                        <span>Yoga & Meditation</span>
+                        <span>Daily @ 7 AM & 6 PM</span>
+                    </div>
+                    <div class="time-slot">
+                        <span>HIIT Training</span>
+                        <span>Mon, Wed, Fri @ 5 PM</span>
+                    </div>
+                    <div class="time-slot">
+                        <span>Strength Camp</span>
+                        <span>Tue, Thu, Sat @ 6 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="registration" id="registration">
+        <div class="container">
+            <h2 class="section-title fade-in">Start Your Transformation</h2>
+            <div class="form-container fade-in">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="plan">Select Membership Plan</label>
+                        <select id="plan" required>
+                            <option value="">Choose your plan</option>
+                            <option value="essential">Essential ($59/month)</option>
+                            <option value="premium">Premium ($89/month)</option>
+                            <option value="elite">Elite ($149/month)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">Fitness Goals</label>
+                        <select id="goals" required>
+                            <option value="">Select your primary goal</option>
+                            <option value="weightloss">Weight Loss</option>
+                            <option value="musclegain">Muscle Building</option>
+                            <option value="strength">Strength Training</option>
+                            <option value="endurance">Endurance</option>
+                            <option value="general">General Fitness</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%">
+                        <i class="fas fa-check-circle"></i> Join PowerFit Today
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Care -->
+    <section class="customer-care" id="customer-care">
+        <div class="container">
+            <h2 class="section-title fade-in">We're Here For You</h2>
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <i class="fas fa-phone feature-icon"></i>
+                    <h3>Call Support</h3>
+                    <p>+1 (888) POWER-FIT</p>
+                    <p>Available 24/7 for members</p>
+                </div>
+
+                <div class="contact-card fade-in">
+                    <i class="fas fa-envelope feature-icon"></i>
+                    <h3>Email Support</h3>
+                    <p>support@powerfit.com</p>
+                    <p>Response within 2 hours</p>
+                </div>
+
+                <div class="contact-card fade-in">
+                    <i class="fas fa-map-marker-alt feature-icon"></i>
+                    <h3>Visit Our Facility</h3>
+                    <p>123 Fitness Avenue</p>
+                    <p>Muscle City, MC 12345</p>
+                </div>
+
+                <div class="contact-card fade-in">
+                    <i class="fas fa-comments feature-icon"></i>
+                    <h3>Live Chat</h3>
+                    <p>Online 8 AM - 10 PM</p>
+                    <p>Instant support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <div class="footer-logo">
+                        <i class="fas fa-dumbbell"></i>
+                        Power<span>Fit</span>
+                    </div>
+                    <p>Transforming lives through fitness excellence. Join thousands of members achieving their goals in
+                        our state-of-the-art facility.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com" target="_blank" class="facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" class="instagram"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com" target="_blank" class="linkedin"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" class="youtube"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Gym Features</a></li>
+                        <li><a href="#pricing"><i class="fas fa-chevron-right"></i> Membership Plans</a></li>
+                        <li><a href="#schedule"><i class="fas fa-chevron-right"></i> Class Schedule</a></li>
+                        <li><a href="#registration"><i class="fas fa-chevron-right"></i> Free Trial</a></li>
+                        <li><a href="#customer-care"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Personal Training</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Group Classes</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Nutrition Coaching</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Recovery Services</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Corporate Wellness</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ & Help Center</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Membership Terms</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Refund Policy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Site Map</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 PowerFit Gym. All rights reserved. Designed with ❤️ for fitness enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('loginModal')">×</button>
+            <h2>Welcome Back!</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="Enter your password">
+                </div>
+                <div style="text-align: right; margin-bottom: 1.5rem;">
+                    <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">
+                        Forgot Password?
+                    </a>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%">
+                    <i class="fas fa-sign-in-alt"></i> Login to Account
+                </button>
+            </form>
+            <p style="margin-top: 1.5rem; text-align: center; color: #666;">
+                Don't have an account? <a href="#" onclick="closeModal('loginModal'); openModal('signupModal')"
+                    style="color: var(--primary); font-weight: 600;">Create Account</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('signupModal')">×</button>
+            <h2>Join PowerFit Family</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone">Phone Number</label>
+                    <input type="tel" id="signupPhone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Create Password</label>
+                    <input type="password" id="signupPassword" required placeholder="Minimum 8 characters">
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirm">Confirm Password</label>
+                    <input type="password" id="signupConfirm" required placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </form>
+            <p style="margin-top: 1.5rem; text-align: center; color: #666;">
+                Already have an account? <a href="#" onclick="closeModal('signupModal'); openModal('loginModal')"
+                    style="color: var(--primary); font-weight: 600;">Sign In</a>
+            </p>
+        </div>
+    </div>
+    <script>
+        // DOM Elements
+        const header = document.getElementById('header');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        // Scroll Event for Header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Scroll Animation
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Form Submissions
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add login logic here
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Simulate login process
+            if (email && password) {
+                showNotification('Login successful! Welcome back!', 'success');
+                closeModal('loginModal');
+            } else {
+                showNotification('Please fill in all fields', 'error');
+            }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add signup logic here
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const phone = document.getElementById('signupPhone').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirm = document.getElementById('signupConfirm').value;
+
+            if (password !== confirm) {
+                showNotification('Passwords do not match', 'error');
+                return;
+            }
+
+            if (name && email && phone && password) {
+                showNotification('Account created successfully! Welcome to PowerFit!', 'success');
+                closeModal('signupModal');
+            } else {
+                showNotification('Please fill in all fields', 'error');
+            }
+        });
+
+        document.getElementById('registrationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add registration logic here
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const plan = document.getElementById('plan').value;
+            const goals = document.getElementById('goals').value;
+
+            if (name && email && phone && plan && goals) {
+                showNotification('Registration submitted successfully! We\'ll contact you within 24 hours.', 'success');
+                e.target.reset();
+
+                // Simulate form submission animation
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
+            } else {
+                showNotification('Please fill in all fields', 'error');
+            }
+        });
+
+        // Notification System
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                ${message}
+            `;
+
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                background: ${type === 'success' ? 'var(--success)' : type === 'error' ? '#E53E3E' : 'var(--accent)'};
+                color: white;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 3000;
+                animation: slideInRight 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 500;
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add CSS animations for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+            
+            .pricing-card button,
+            .contact-card {
+                transition: all 0.3s ease;
+            }
+            
+            .pricing-card button:hover {
+                transform: translateY(-2px) scale(1.05);
+            }
+            
+            .contact-card:hover {
+                transform: translateY(-5px);
+            }
+            
+            // Mobile menu animation
+            @media (max-width: 768px) {
+                .nav-menu {
+                    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                
+                .nav-menu.active {
+                    transform: translateX(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize counters for hero stats
+        function initCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 2000; // The lower the slower
+
+            counters.forEach(counter => {
+                const target = +counter.innerText.replace('+', '');
+                const count = +counter.innerText;
+                const increment = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(() => initCounters(), 1);
+                } else {
+                    counter.innerText = target + '+';
+                }
+            });
+        }
+
+        // Initialize after page load
+        window.addEventListener('load', () => {
+            initCounters();
+
+            // Add loading animation to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            if (parallax) {
+                const rate = scrolled * -0.5;
+                parallax.style.transform = `translate3d(0px, ${rate}px, 0px)`;
+            }
+        });
+
+        // Add hover effects to feature cards
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Keyboard accessibility
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        closeModal(modal.id);
+                    }
+                });
+            }
+        });
+
+        // Add focus styles for accessibility
+        document.addEventListener('focus', (e) => {
+            if (e.target.matches('a, button, input, select, textarea')) {
+                e.target.style.outline = '2px solid var(--primary)';
+                e.target.style.outlineOffset = '2px';
+            }
+        }, true);
+
+        document.addEventListener('blur', (e) => {
+            if (e.target.matches('a, button, input, select, textarea')) {
+                e.target.style.outline = 'none';
+            }
+        }, true);
+
+    </script>
+</body>
+
+</html>
